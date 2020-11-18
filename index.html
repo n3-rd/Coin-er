@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+   <meta name="Coin-er" content="A simple crypto price app"/>
+   <meta <meta name="author" content="Godwin Jemegah godwinjdayo@gmail.com">
+   
+    <link rel="stylesheet" href="assets/css/quasar.min.css">
+    <link rel="stylesheet" href="assets/css/LineIcons.css">
+    <link rel="stylesheet" href="assets/css/app.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <title>Coin-er - A simple crypto price app</title>
+</head>
+<body>
+    
+<div id="app">
+
+
+
+  <q-pull-to-refresh @refresh="refresh" img="assets\img\69bd507e9e.svg.svg">
+    <link rel="shortcut icon" type="image/jpg" href="assets/img/favicon-32x32.png"/>
+    <link rel='icon' href='favicon.ico' type='image/x-icon'/ >
+    <div class="app-title-bg">
+      <div class="app-title">
+        Coin-er
+      </div>
+      <div class="title-credits">
+        Made with <i class="lni lni-heart-filled"></i> by <a href="https://n3-rd.github.io" target="blank">Jemegah Godwin</a>
+      </div>
+    </div>
+
+    <q-list>
+      <div>
+        <q-item v-for="coin in coinsData" class="q-my-sm coin" clickable v-ripple>
+          <q-item-section avatar>
+            <q-avatar text-color="white">
+              <img :src="coin.iconUrl" :alt="coin.name" class="src">
+            </q-avatar>
+          </q-item-section>
+  
+          <q-item-section>
+            <q-item-label class="coin-name">{{ coin.name }}</q-item-label>
+            <q-item-label caption lines="1" class="coin-price">$ {{ Math.round(coin.price * 1000)/1000 }}</q-item-label>
+          </q-item-section>
+  
+          <q-item-section side>
+            <q-icon color="grey-9">
+              <i class="lni lni-chevron-right"></i>
+              </q-icon>
+          </q-item-section>
+  
+          <q-popup-proxy>
+            <q-banner style="width: 96%;">
+          
+              <div class="full-container">
+                <div class="coin-symbol">
+                  <img class="block-center" :alt="coin.name" :src="coin.iconUrl" width="20%" class="src" :ratio="4/3">
+                    <br>{{coin.symbol}}
+                  </div>
+              </div>
+               
+        
+              <div>
+                <q-list class="rounded-borders">
+                  <q-item>
+                    <q-item-section class="info">
+                      <div v-if="coin.websiteUrl">
+                        <span class="info-title">Website </span> <a :href="coin.websiteUrl" target="blank">{{coin.websiteUrl}}</a> 
+                      </div>
+                    </q-item-section>
+                  </q-item>
+
+                  <q-item>
+                    <q-item-section class="info">
+                      <div v-if="coin.change">
+                        <span class="info-title"> Change </span>{{coin.change}}
+                      </div>
+                    </q-item-section>
+                  </q-item>
+
+                  <q-item>
+                    <q-item-section class="info">
+                      <div v-if="coin.rank">
+                        <span class="info-title"> Rank </span>{{coin.rank}}
+                      </div>
+                    </q-item-section>
+                  </q-item>
+
+                  <q-item>
+                    <q-item-section class="info">
+                      <div v-if="coin.marketCap">
+                        <span class="info-title"> marketCap </span>{{coin.marketCap}}
+                      </div>
+                    </q-item-section>
+                  </q-item>
+
+                  <div v-if="coin.description">
+                    <div class="about-coin">
+                      About {{coin.name}}
+                      <q-popup-proxy>
+                        <q-banner>
+                          <!-- <template v-slot:avatar>
+                            <q-icon name="signal_wifi_off" color="primary" />
+                          </template> -->
+                          <div class="coin-description" v-html="coin.description">
+                          </div>
+                        </q-banner>
+                      </q-popup-proxy>
+                
+                    </div>
+                  </div>
+                  
+
+                  </q-list>
+              </q-banner>
+            </q-popup-proxy>
+          </q-item>
+      </div>
+      
+        </q-list>
+      </q-pull-to-refresh>
+      <div class="credits">
+        Made with <i class="lni lni-heart-filled"></i> by <a href="https://n3-rd.github.io" target="blank">Jemegah Godwin</a>
+      </div>
+            </div>
+           
+</body>
+<script src="assets/js/vue.min.js"></script>
+<script src="assets/js/quasar.umd.min.js"></script>
+<script src="assets/js/app.js"></script>
+</html>
