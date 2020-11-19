@@ -24,7 +24,7 @@ h6 {
 }
 
 .app-title-bg {
-  background-color: #8cc451c1;
+  background-color: #8dc451;
   width: 85%;
   margin: 14px auto;
   border-radius: 15px;
@@ -34,7 +34,7 @@ h6 {
   font-size: 40px;
   text-align: center;
   font-weight: 900;
-  padding: 30px;
+  padding: 10px;
   color: #fff;
 }
 
