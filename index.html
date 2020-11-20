@@ -36,7 +36,7 @@
 
     <q-list>
       <div>
-        <q-item v-for="coin in coinsData" class="q-my-sm coin" clickable v-ripple>
+        <q-item v-for="coin in coinsData" class="q-my-sm coin" clickable v-ripple @click="changeColor(coin.change)">
           <q-item-section avatar>
             <q-avatar text-color="white">
               <img :src="coin.iconUrl" :alt="coin.name" class="src">
@@ -55,12 +55,18 @@
           </q-item-section>
   
           <q-popup-proxy>
-            <q-banner style="width: 96%;">
+            <q-banner class="popup-banner">
           <div class="full-container-bg">
             <div class="full-container">
               <div class="coin-symbol">
                 <img class="block-center" intrinsicsize="400x400" :alt="coin.name" :src="coin.iconUrl" class="coin-popup-image">
                   <br>{{coin.symbol}}
+                </div>
+                <div v-if="coin.websiteUrl" class="coin-website">
+                  <a :href="coin.websiteUrl" target="blank">Website</a>  
+                </div>
+                <div class="popup-price">
+                  {{coin.price}}
                 </div>
             </div>
           </div>
@@ -68,19 +74,13 @@
                
         
               <div>
+                
                 <q-list class="rounded-borders">
-                  <q-item>
-                    <q-item-section class="info">
-                      <div v-if="coin.websiteUrl">
-                        <span class="info-title">Website </span> <a :href="coin.websiteUrl" target="blank">{{coin.websiteUrl}}</a> 
-                      </div>
-                    </q-item-section>
-                  </q-item>
 
                   <q-item>
                     <q-item-section class="info">
                       <div v-if="coin.change">
-                        <span class="info-title"> Change </span>{{coin.change}}
+                        <span class="info-title"> Change </span><span v-model="changeV" :id="changeV > 0 ? 'p-change' : 'n-change'">{{coin.change}}%</span>
                       </div>
                     </q-item-section>
                   </q-item>
@@ -100,6 +100,8 @@
                       </div>
                     </q-item-section>
                   </q-item>
+
+                  <img width="90%" :src="chartSrc" v-if="loaded">
 
                   <div v-if="coin.description">
                     <div class="about-coin">
@@ -134,5 +136,6 @@
 </body>
 <script src="assets/js/vue.min.js"></script>
 <script src="assets/js/quasar.umd.min.js"></script>
+<script src="assets/js/fittext.js"></script>
 <script src="assets/js/app.js"></script>
 </html>

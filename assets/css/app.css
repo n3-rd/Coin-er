@@ -95,9 +95,39 @@ h6 {
   font-size: 18px;
   font-weight: 600;
   padding: 33px;
+  cursor: pointer;
 }
 
 .full-container {
   padding: 33px;
+}
+
+#p-change {
+  color: #8dc451;
+}
+
+#n-change {
+  color: #e14439;
+}
+
+.coin-website {
+  text-align: center !important;
+  font-size: 22px !important;
+  width: 100%;
+  padding: 22px;
+}
+
+.popup-price {
+  color: #8dc451;
+  text-align: center !important;
+  font-size: 22px !important;
+  font-weight: 600;
+  padding: 22px;
+}
+
+.popup-banner {
+  overflow-x: hidden;
+  border-radius: 15px !important;
+  height: 90vh !important;
 }
 /*# sourceMappingURL=app.css.map */
