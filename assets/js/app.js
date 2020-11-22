@@ -26,8 +26,25 @@ var app = new Vue({
         done();
       }, 1000);
     },
-    changeColor: function(ch){
+    generateChangeColorAndGraph: function(ch, history){
       this.changeV =  ch
+      Chartist.precision = 8;
+
+      setTimeout(function(){
+        new Chartist.Line('.historyChart', {
+          
+          series: [
+            history
+          ]
+        }, {
+          // low: 0,
+          showArea: true,
+          showPoint: false,
+          fullWidth: true
+        });
+      }, 1000)
+     
+      
     }
   },
   created() {
@@ -40,3 +57,4 @@ var app = new Vue({
     }
   }
 });
+

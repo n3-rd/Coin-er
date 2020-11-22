@@ -13,6 +13,7 @@ h4,
 h5,
 h6 {
   color: #8dc451;
+  text-align: center;
 }
 
 .credits {
@@ -129,5 +130,15 @@ h6 {
   overflow-x: hidden;
   border-radius: 15px !important;
   height: 90vh !important;
+}
+
+@media only screen and (min-device-width: 768px) and (-webkit-min-device-pixel-ratio: 1) {
+  .popup-banner {
+    height: 100vh !important;
+  }
+  body > div.q-menu.q-position-engine.scroll {
+    width: 50%;
+    max-height: 100vh !important;
+  }
 }
 /*# sourceMappingURL=app.css.map */

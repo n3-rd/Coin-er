@@ -7,10 +7,12 @@
    <meta <meta name="author" content="Godwin Jemegah godwinjdayo@gmail.com">
    
     <link rel="stylesheet" href="assets/css/quasar.min.css">
-    <link rel="stylesheet" href="assets/css/LineIcons.css">
+    <link rel="stylesheet" href="assets/css/chartist.min.css">
     <link rel="stylesheet" href="assets/css/app.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
     <title>Coin-er - A simple crypto price app</title>
 </head>
 <body>
@@ -30,13 +32,15 @@
         Coin-er
       </div>
       <div class="title-credits">
-        Made with <i class="lni lni-heart-filled"></i> by <a href="https://n3-rd.github.io" target="blank">Jemegah Godwin</a>
+        Made with <span class="material-icons">
+          favorite
+          </span> by <a href="https://n3-rd.github.io" target="blank">Jemegah Godwin</a>
       </div>
     </div>
 
     <q-list>
       <div>
-        <q-item v-for="coin in coinsData" class="q-my-sm coin" clickable v-ripple @click="changeColor(coin.change)">
+        <q-item v-for="coin in coinsData" class="q-my-sm coin" clickable v-ripple @click="generateChangeColorAndGraph(coin.change, coin.history)">
           <q-item-section avatar>
             <q-avatar text-color="white">
               <img :src="coin.iconUrl" :alt="coin.name" class="src">
@@ -50,7 +54,9 @@
   
           <q-item-section side>
             <q-icon color="grey-9">
-              <i class="lni lni-chevron-right"></i>
+              <span class="material-icons">
+                keyboard_arrow_right
+                </span>
               </q-icon>
           </q-item-section>
   
@@ -96,12 +102,53 @@
                   <q-item>
                     <q-item-section class="info">
                       <div v-if="coin.marketCap">
-                        <span class="info-title"> marketCap </span>{{coin.marketCap}}
+                        <span class="info-title"> Market Cap </span>{{coin.marketCap}}
                       </div>
                     </q-item-section>
                   </q-item>
 
-                  <img width="90%" :src="chartSrc" v-if="loaded">
+                  <q-expansion-item
+        expand-separator
+        label="Show advanced"
+        icon="info"
+        header-class="text-purple"
+      >
+<q-item>
+      <q-item-section class="info">
+        <div v-if="coin.volume">
+          <span class="info-title"> Volume </span>{{coin.volume}}
+        </div>
+      </q-item-section>
+    </q-item>
+
+    <q-item>
+    <q-item-section class="info">
+      <div v-if="coin.circulatingSupply">
+        <span class="info-title"> Circulating Supply </span>{{coin.circulatingSupply}}
+      </div>
+    </q-item-section>
+  </q-item>
+    
+  <q-item>
+      <q-item-section class="info">
+        <div v-if="coin.numberOfMarkets">
+          <span class="info-title"> No. Of Markets </span>{{coin.numberOfMarkets}}
+        </div>
+      </q-item-section>
+    </q-item>
+
+    <q-item>
+      <q-item-section class="info">
+        <div v-if="coin.totalSupply">
+          <span class="info-title"> Total Supply </span>{{coin.totalSupply}}
+        </div>
+      </q-item-section>
+    </q-item>
+
+    </q-expansion-item>
+
+                  <h5>History</h5>
+                  <div class="historyChart" v-if="coin.history"></div>
 
                   <div v-if="coin.description">
                     <div class="about-coin">
@@ -118,8 +165,6 @@
                 
                     </div>
                   </div>
-                  
-
                   </q-list>
               </q-banner>
             </q-popup-proxy>
@@ -129,7 +174,9 @@
         </q-list>
       </q-pull-to-refresh>
       <div class="credits">
-        Made with <i class="lni lni-heart-filled"></i> by <a href="https://n3-rd.github.io" target="blank">Jemegah Godwin</a>
+        Made with <span class="material-icons">
+          favorite
+          </span> by <a href="https://n3-rd.github.io" target="blank">Jemegah Godwin</a>
       </div>
             </div>
            
@@ -137,5 +184,10 @@
 <script src="assets/js/vue.min.js"></script>
 <script src="assets/js/quasar.umd.min.js"></script>
 <script src="assets/js/fittext.js"></script>
+<script src="assets/js/chartist.min.js"></script>
+<script src="assets/js/material-icons.umd.min.js"></script>
+<script>
+  Quasar.iconSet.set(Quasar.iconSet.materialIcons)
+</script>
 <script src="assets/js/app.js"></script>
 </html>
