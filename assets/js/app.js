@@ -14,10 +14,6 @@ var app = new Vue({
       fetch("https://api.coinranking.com/v1/public/coins")
         .then((response) => response.json())
         .then((json) => (this.coinsData = json.data.coins));
-        // this.history = this.coinsData.map(i => {
-        //   if(i.history) return i.history;
-        //   return 0;
-        // });
         this.loaded = true;
     },
     refresh(done) {
@@ -37,7 +33,6 @@ var app = new Vue({
             history
           ]
         }, {
-          // low: 0,
           showArea: true,
           showPoint: false,
           fullWidth: true
@@ -50,11 +45,6 @@ var app = new Vue({
   created() {
     this.getCoinsData();
     window.fitText( document.querySelectorAll('.coin-website'), 10 );
-  },
-  computed: {
-    chartSrc() {
-      return `https://quickchart.io/chart?c={type:'sparkline',data:{datasets:[{data:[${this.history}]}]}}`
-    }
   }
 });
 
