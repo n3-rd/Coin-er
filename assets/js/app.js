@@ -20,7 +20,6 @@ var app = new Vue({
     loaded: false,
     changeV: '',
     currency: localStorage.getItem('defaultCurrency'),
-    // darkMode: localStorage.getItem('darkModeStatus'),
     history: [
   
     ]
@@ -78,7 +77,7 @@ var app = new Vue({
       
     },
     setDarkMode: function(){
-      
+  
     },
     changeToNgn: function(){
       localStorage.setItem('defaultCurrencyApi', 'NGN')
