@@ -73,7 +73,7 @@
   
           <q-item-section>
             <q-item-label class="coin-name">{{ coin.name }}</q-item-label>
-            <q-item-label caption lines="1" class="coin-price">$ {{ Math.round(coin.price * 1000)/1000 }}</q-item-label>
+            <q-item-label caption lines="1" class="coin-price">$ {{ numeral(coin.price).format('0,0.000') }}</q-item-label>
           </q-item-section>
   
           <q-item-section side>
@@ -97,8 +97,9 @@
                   <a :href="coin.websiteUrl" target="blank">Website</a>  
                 </div>
                 <div class="popup-price">
-                  {{coin.price}}
-                </div>
+                  $ {{ numeral(coin.price).format('0,0.000') }}
+                </div>  
+                
             </div>
           </div>
               
@@ -216,6 +217,7 @@
 <script src="assets/js/fittext.js"></script>
 <script src="assets/js/chartist.min.js"></script>
 <script src="assets/js/material-icons.umd.min.js"></script>
+<script src="assets/js/numeral.min.js"></script>
 <script>
   Quasar.iconSet.set(Quasar.iconSet.materialIcons)
 </script>
