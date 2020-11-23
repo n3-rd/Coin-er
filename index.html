@@ -64,7 +64,7 @@
 <br>
 <h4>This will take a few seconds depending on your internet connection</h4>
         </div>
-        <q-item v-if="loaded" v-for="coin in coinsData" class="q-my-sm coin" clickable v-ripple @click="generateChangeColorAndGraph(coin.change, coin.history)">
+        <q-item v-if="loaded" v-for="coin in coinsData" class="q-my-sm coin" clickable v-ripple @click="generateChangeColorAndGraph(coin.change, coin.history, coin.color)">
           <q-item-section avatar>
             <q-avatar text-color="white">
               <img :src="coin.iconUrl" :alt="coin.name" class="src">

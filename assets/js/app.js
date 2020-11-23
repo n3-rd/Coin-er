@@ -24,12 +24,12 @@ var app = new Vue({
         done();
       }, 1000);
     },
-    generateChangeColorAndGraph: function(ch, history){
+    generateChangeColorAndGraph: function(ch, history, coinColor){
       this.changeV =  ch
       Chartist.precision = 8;
 
       setTimeout(function(){
-        new Chartist.Line('.historyChart', {
+        var chart = new Chartist.Line('.historyChart', {
           
           series: [
             history
@@ -39,7 +39,27 @@ var app = new Vue({
           showPoint: false,
           fullWidth: true
         });
-      }, 1000)
+        chart.on('draw', function(data) {
+          if(data.type === 'line' || data.type === 'area') {
+            data.element.animate({
+              d: {
+                begin: 2000 * data.index,
+                dur: 2000,
+                from: data.path.clone().scale(1, 0).translate(0, data.chartRect.height()).stringify(),
+                to: data.path.clone().stringify(),
+                easing: Chartist.Svg.Easing.easeOutQuint
+              }
+            });
+          }
+      setTimeout(function(){
+        document.querySelector('.ct-series-a .ct-line').style.stroke = coinColor
+        document.querySelector('.ct-series-a .ct-area, .ct-series-a .ct-slice-donut-solid, .ct-series-a .ct-slice-pie').style.fill = coinColor
+
+      }, 200)
+
+        });
+      }, 900)
+
      
       
     },
