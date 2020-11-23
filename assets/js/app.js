@@ -1,4 +1,17 @@
 
+var nairaSign = '₦'
+var dollarSign = '$'
+var euroSign = '€'
+
+if(!localStorage.getItem('defaultCurrencyApi')){
+  localStorage.setItem('defaultCurrencyApi', 'USD')
+}
+if(!localStorage.getItem('defaultCurrency')){
+  localStorage.setItem('defaultCurrency', '$')
+}
+
+var defaultCurrencyApi = localStorage.getItem('defaultCurrencyApi')
+
 var app = new Vue({
   el: "#app",
   data: {
@@ -6,6 +19,7 @@ var app = new Vue({
     dialog: false,
     loaded: false,
     changeV: '',
+    currency: localStorage.getItem('defaultCurrency'),
     // darkMode: localStorage.getItem('darkModeStatus'),
     history: [
   
@@ -13,7 +27,7 @@ var app = new Vue({
   },
   methods: {
     getCoinsData() {
-      fetch("https://api.coinranking.com/v1/public/coins")
+      fetch(`https://api.coinranking.com/v1/public/coins?base=${defaultCurrencyApi}`)
         .then((response) => response.json())
         .then((json) => (this.coinsData = json.data.coins));
         this.loaded = true;
@@ -65,6 +79,27 @@ var app = new Vue({
     },
     setDarkMode: function(){
       
+    },
+    changeToNgn: function(){
+      localStorage.setItem('defaultCurrencyApi', 'NGN')
+      localStorage.setItem('defaultCurrency', '₦')
+      defaultCurrencyApi = 'NGN'
+      this.currency = localStorage.getItem('defaultCurrency')
+      this.getCoinsData()
+    },
+    changeToUsd: function(){
+      localStorage.setItem('defaultCurrencyApi', 'USD')
+      localStorage.setItem('defaultCurrency', '$')
+      defaultCurrencyApi = 'USD'
+      this.currency = localStorage.getItem('defaultCurrency')
+      this.getCoinsData()
+    },
+    changeToEur: function(){
+      localStorage.setItem('defaultCurrencyApi', 'EUR')
+      localStorage.setItem('defaultCurrency', '€')
+      defaultCurrencyApi = 'EUR'
+      this.currency = localStorage.getItem('defaultCurrency')
+      this.getCoinsData()
     }
   },
   created() {
