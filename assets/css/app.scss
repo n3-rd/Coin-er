@@ -1,5 +1,9 @@
 body {
   font-family: "Open Sans", sans-serif;
+  overflow-x: hidden;
+}
+body.body--dark {
+  background: rgb(6, 15, 28)
 }
 a {
   color: #8dc451;
@@ -58,6 +62,9 @@ h6 {
   text-align: center;
   font-weight: 700;
 }
+body.body--dark > div.q-dialog.fullscreen.no-pointer-events > div.q-dialog__inner.flex.no-pointer-events.q-dialog__inner--minimized.q-dialog__inner--standard.fixed-full.flex-center > div > div.q-banner__content.col.text-body2 > div.full-container-bg > div > div.coin-symbol {
+  color: #fff!important;
+}
 .coin-description {
   font-size: 17px;
 }
@@ -76,6 +83,9 @@ h6 {
     font-weight: 600 !important;
     color: #333;
   }
+}
+body.body--dark > div.q-dialog.fullscreen.no-pointer-events > div.q-dialog__inner.flex.no-pointer-events.q-dialog__inner--minimized.q-dialog__inner--standard.fixed-full.flex-center > div > div.q-banner__content.col.text-body2 > div > div > div > div > div > span.info-title{
+  color: #fff;
 }
 .about-coin {
   color: #8dc451;
@@ -115,6 +125,12 @@ h6 {
 }
 .pre-loaded{
   text-align: center;
+}
+body.body--dark > div.q-dialog.fullscreen.no-pointer-events > div.q-dialog__inner.flex.no-pointer-events.q-dialog__inner--minimized.q-dialog__inner--standard.fixed-full.flex-center > div > div.q-banner__content.col.text-body2 > div > div > div.historyChart > svg > g.ct-labels > foreignObject > span{
+color: #fff;
+}
+body.body--dark > div.q-dialog.fullscreen.no-pointer-events > div.q-dialog__inner.flex.no-pointer-events.q-dialog__inner--minimized.q-dialog__inner--standard.fixed-full.flex-center > div > div.q-banner__content.col.text-body2 > div > div > div.q-expansion-item.q-item-type.q-expansion-item--expanded.q-expansion-item--standard > div > div.q-expansion-item__content.relative-position > div > div > div > span{
+  color: #fff;
 }
 @media only screen 
   and (min-device-width: 768px) 

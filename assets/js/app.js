@@ -1,3 +1,4 @@
+
 var app = new Vue({
   el: "#app",
   data: {
@@ -5,6 +6,7 @@ var app = new Vue({
     dialog: false,
     loaded: false,
     changeV: '',
+    // darkMode: localStorage.getItem('darkModeStatus'),
     history: [
   
     ]
@@ -39,6 +41,9 @@ var app = new Vue({
         });
       }, 1000)
      
+      
+    },
+    setDarkMode: function(){
       
     }
   },

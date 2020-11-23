@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="assets/css/chartist.min.css">
     <link rel="stylesheet" href="assets/css/app.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="shortcut icon" type="image/jpg" href="assets/img/favicon-32x32.png"/>
+    <link rel='icon' href='favicon.ico' type='image/x-icon'/ >
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
@@ -22,9 +24,23 @@
 
 
   <q-pull-to-refresh @refresh="refresh" img="assets\img\69bd507e9e.svg.svg">
-    <link rel="shortcut icon" type="image/jpg" href="assets/img/favicon-32x32.png"/>
-    <link rel='icon' href='favicon.ico' type='image/x-icon'/ >
-    <div class="app-title-bg">
+  
+    <q-layout>
+
+      <q-header>
+        <q-toolbar>
+          <q-avatar>
+            <img src="assets/img/logo.png">
+          </q-avatar>
+
+          <q-toolbar-title>Coin-er</q-toolbar-title>
+
+          <q-btn flat round dense icon="code"></q-btn>
+          <q-btn flat round dense icon="settings_brightness" @click="setDarkMode"></q-btn>
+        </q-toolbar>
+      </q-header>
+
+    <!-- <div class="app-title-bg">
       <div class="logo">
         <img src="assets/img/logo.png" width="10%" alt="">
       </div>
@@ -36,11 +52,13 @@
           favorite
           </span> by <a href="https://n3-rd.github.io" target="blank">Jemegah Godwin</a>
       </div>
-    </div>
+    </div> -->
+    <q-page-container>
 
+    <q-page padding>
+     
     <q-list>
       <div>
-
         <div v-if="!loaded" class="pre-loaded">
 <h3>Loading Data</h3>
 <br>
@@ -65,6 +83,7 @@
                 </span>
               </q-icon>
           </q-item-section>
+          
   
           <q-popup-proxy>
             <q-banner class="popup-banner">
@@ -179,11 +198,16 @@
       
         </q-list>
       </q-pull-to-refresh>
+      
       <div class="credits">
         Made with <span class="material-icons">
           favorite
           </span> by <a href="https://n3-rd.github.io" target="blank">Jemegah Godwin</a>
+        </q-page>
+      </q-page-container>
       </div>
+
+    </q-layout>
             </div>
            
 </body>
